@@ -45,7 +45,7 @@ class ENC28J60Class {
         ENC28J60Class();
         ~ENC28J60Class();
 
-        bool begin(int MISO_GPIO, int MOSI_GPIO, int SCLK_GPIO, int CS_GPIO, int INT_GPIO, int SPI_CLOCK_MHZ, int SPI_HOST, bool use_mac_from_efuse=false);
+        bool begin(int miso_gpio, int mosi_gpio, int sclk_gpio, int cs_gpio, int int_gpio, int spi_clock_mhz, int spi_host, bool use_mac_from_efuse=false);
 
         bool config(IPAddress local_ip, IPAddress gateway, IPAddress subnet, IPAddress dns1 = (uint32_t)0x00000000, IPAddress dns2 = (uint32_t)0x00000000);
 

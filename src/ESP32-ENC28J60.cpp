@@ -21,7 +21,7 @@
 
 
 extern "C" {
-  esp_eth_mac_t* enc28j60_begin(int MISO_GPIO, int MOSI_GPIO, int SCLK_GPIO, int CS_GPIO, int INT_GPIO, int SPI_CLOCK_MHZ, int SPI_HOST);
+  esp_eth_mac_t* enc28j60_begin(int miso_gpio, int mosi_gpio, int sclk_gpio, int cs_gpio, int int_gpio, int spi_clock_mhz, int spi_host);
   #include "extmod/esp_eth_enc28j60.h"
 }
 
@@ -83,7 +83,7 @@ ENC28J60Class::~ENC28J60Class()
 {}
 
 //bool ENC28J60Class::begin(uint8_t phy_addr, int power, int mdc, int mdio, eth_phy_type_t type, eth_clock_mode_t clock_mode, bool use_mac_from_efuse)
-bool ENC28J60Class::begin(int MISO_GPIO, int MOSI_GPIO, int SCLK_GPIO, int CS_GPIO, int INT_GPIO, int SPI_CLOCK_MHZ, int SPI_HOST, bool use_mac_from_efuse)
+bool ENC28J60Class::begin(int miso_gpio, int mosi_gpio, int sclk_gpio, int cs_gpio, int int_gpio, int spi_clock_mhz, int spi_host, bool use_mac_from_efuse)
 {
     tcpipInit();
 
@@ -99,7 +99,7 @@ bool ENC28J60Class::begin(int MISO_GPIO, int MOSI_GPIO, int SCLK_GPIO, int CS_GP
     esp_netif_config_t cfg = ESP_NETIF_DEFAULT_ETH();
     esp_netif_t *eth_netif = esp_netif_new(&cfg);
 
-    esp_eth_mac_t *eth_mac = enc28j60_begin(MISO_GPIO, MOSI_GPIO, SCLK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, SPI_HOST);
+    esp_eth_mac_t *eth_mac = enc28j60_begin(miso_gpio, mosi_gpio, sclk_gpio, cs_gpio, int_gpio, spi_clock_mhz, spi_host);
 
     if(eth_mac == NULL){
         log_e("esp_eth_mac_new_esp32 failed");

@@ -131,7 +131,7 @@ bool ENC28J60Class::begin(int miso_gpio, int mosi_gpio, int sclk_gpio, int cs_gp
     eth_mac->set_addr(eth_mac, ENC28J60_Default_Mac);
 
     // ENC28J60 Errata #1 check
-    if (emac_enc28j60_get_chip_info(eth_mac) < ENC28J60_REV_B5 && SPI_CLOCK_MHZ < 8) {
+    if (emac_enc28j60_get_chip_info(eth_mac) < ENC28J60_REV_B5 && spi_clock_mhz < 8) {
         log_e("SPI frequency must be at least 8 MHz for chip revision less than 5");
         ESP_ERROR_CHECK(ESP_FAIL);
     }

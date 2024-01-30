@@ -90,7 +90,7 @@ bool ENC28J60Class::begin(int miso_gpio, int mosi_gpio, int sclk_gpio, int cs_gp
     uint8_t ENC28J60_Default_Mac[6] = { 0x02, 0x00, 0x00, 0x12, 0x34, 0x56 };
 
     if (use_mac_from_efuse) {
-        esp_efuse_mac_get_custom( ENC28J60_Default_Mac );
+    	esp_read_mac(ENC28J60_Default_Mac, ESP_MAC_ETH);
     }
     esp_base_mac_addr_set( ENC28J60_Default_Mac );
 
